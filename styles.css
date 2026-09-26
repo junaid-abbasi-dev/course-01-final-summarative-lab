@@ -1,13 +1,223 @@
+:root {
+    --bg: #e8f1f4;
+    --bg-accent: #d3e8ee;
+    --surface: #ffffff;
+    --text: #1a2e35;
+    --muted: #4d6a73;
+    --accent: #0f6e7c;
+    --accent-hover: #0b5560;
+    --border: #b7d0d8;
+    --favorite: #fff4d6;
+    --favorite-border: #e0a800;
+    --success: #c8e6c9;
+    --shadow: 0 8px 24px rgba(15, 60, 70, 0.08);
+}
+
+* {
+    box-sizing: border-box;
+}
+
 html {
-    font-family: Arial, Helvetica, sans-serif;
     margin: 0;
     padding: 0;
 }
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: "Nunito", sans-serif;
+    color: var(--text);
+    background:
+        radial-gradient(circle at top left, #f4fbff 0%, transparent 45%),
+        linear-gradient(160deg, var(--bg) 0%, var(--bg-accent) 100%);
+    padding: 2rem 1.25rem 3rem;
+}
+
+h1 {
+    font-family: "Fraunces", serif;
+    font-size: clamp(2rem, 5vw, 2.75rem);
+    text-align: center;
+    margin: 0 0 1.5rem;
+    color: var(--accent);
+    letter-spacing: -0.02em;
+}
+
+#form-container {
+    max-width: 520px;
+    margin: 0 auto 2rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 1.5rem;
+    box-shadow: var(--shadow);
+}
+
 #form {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: stretch;
+    gap: 0.75rem;
 }
+
+label {
+    font-size: 1.15rem;
+    font-weight: 700;
+    text-align: center;
+}
+
 #word {
-    margin: 1rem 0;
+    margin: 0;
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    font: inherit;
+    font-size: 1rem;
+    background: #f8fcfd;
+    color: var(--text);
+}
+
+#word:focus {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+    background: #fff;
+}
+
+#submit-btn,
+#save-favorite-btn {
+    border: none;
+    border-radius: 10px;
+    padding: 0.75rem 1.25rem;
+    font: inherit;
+    font-weight: 700;
+    cursor: pointer;
+    background: var(--accent);
+    color: #fff;
+    transition: background-color 0.15s ease, transform 0.15s ease;
+}
+
+#submit-btn:hover,
+#save-favorite-btn:hover {
+    background: var(--accent-hover);
+}
+
+#submit-btn:active,
+#save-favorite-btn:active {
+    transform: translateY(1px);
+}
+
+#word-info {
+    max-width: 720px;
+    margin: 0 auto 2rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 1.5rem 1.75rem;
+    box-shadow: var(--shadow);
+}
+
+#word-info:empty {
+    display: none;
+}
+
+#word-info h2 {
+    font-family: "Fraunces", serif;
+    font-size: 1.35rem;
+    margin: 1.5rem 0 0.75rem;
+    color: var(--accent);
+    border-bottom: 2px solid var(--bg-accent);
+    padding-bottom: 0.35rem;
+}
+
+#word-info h3 {
+    font-size: 1.05rem;
+    margin: 1.25rem 0 0.5rem;
+    color: var(--muted);
+}
+
+#word-info h4 {
+    margin: 1.75rem 0 0.35rem;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--muted);
+}
+
+#word-info h4:first-child {
+    margin-top: 0;
+}
+
+#word-info p {
+    margin: 0.4rem 0;
+    line-height: 1.55;
+    color: var(--text);
+}
+
+#word-info a {
+    display: inline-block;
+    margin-top: 1.25rem;
+    color: var(--accent);
+    font-weight: 600;
+    word-break: break-all;
+}
+
+#word-info a:hover {
+    color: var(--accent-hover);
+}
+
+#save-favorite-btn {
+    display: inline-block;
+    margin-top: 1.25rem;
+}
+
+.saved-highlight {
+    background-color: #2e7d32 !important;
+}
+
+#favorites-section {
+    max-width: 720px;
+    margin: 0 auto;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 1.5rem 1.75rem;
+    box-shadow: var(--shadow);
+}
+
+#favorites-section h2 {
+    font-family: "Fraunces", serif;
+    margin: 0 0 1rem;
+    color: var(--accent);
+    font-size: 1.4rem;
+}
+
+#favorites-list {
+    padding-left: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+}
+
+.favorite-item {
+    background-color: var(--favorite);
+    border-left: 4px solid var(--favorite-border);
+    border-radius: 8px;
+    padding: 0.55rem 0.9rem;
+    margin-bottom: 0;
+    list-style: none;
+    font-weight: 600;
+}
+
+@media (max-width: 600px) {
+    body {
+        padding: 1.25rem 0.85rem 2rem;
+    }
+
+    #form-container,
+    #word-info,
+    #favorites-section {
+        padding: 1.15rem;
+        border-radius: 12px;
+    }
 }
